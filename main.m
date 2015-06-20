@@ -7,18 +7,23 @@
 %             apply move( move, i )
 %     print winner
 
-game = TicTacToe.create();
-while isempty( game.state.winner )
-    for k = 1 : length( game.player )
-        moves = game.getMovesAvailable( k );
-        idx = randi(length(moves));
-        game = game.makeMove( moves(idx), k );
-        game.disp();
-    end
+clear; clc
+
+game = TicTacToe();
+while isempty( game.winner )
+    
+    movesAvail = game.getMovesAvailable();
+    
+    move = TicTacToe.randomMove( movesAvail );
+    [game, nextPlayer] = game.makeMove( move );
+    
+    game.print();
+    
+    pause(0.2)
 end
 
-if game.state.winner == 0
+if game.winner == 0
     disp('Game ended in a tie!');
 else
-    disp(['Winner is player ' num2str(game.state.winner)])
+    disp(['Winner is player ' num2str(game.winner)])
 end
