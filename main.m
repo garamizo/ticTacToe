@@ -1,36 +1,17 @@
 
 clear
 
-global count
-count = 0;
-
 game = TicTacToe();
 nextPlayer = 1;
-
-[game, nextPlayer] = game.makeMove( 2, 1 );
-[game, nextPlayer] = game.makeMove( 2, 2 );
-[game, nextPlayer] = game.makeMove( 2, 1 );
-[game, nextPlayer] = game.makeMove( 3, 2 );
-[game, nextPlayer] = game.makeMove( 3, 1 );
-[game, nextPlayer] = game.makeMove( 4, 1 );
-game.print
-tic
-moveK = game.expertMove3( 2 )
-toc
-%game.checkMove( 1, 4 )
-
-%%
 
 while isempty( game.winner )
     
     if nextPlayer == 1
-        moveK = game.expertMove3( nextPlayer );
-        %score
-    else
         moveK = game.expertMove( nextPlayer );
+    else
+        moveK = game.userMove(  );
     end
     
-    %move = game.expertMove2( nextPlayer );
     if isempty( moveK )
         print('Stalemate!')
         break
